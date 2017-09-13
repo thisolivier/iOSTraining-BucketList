@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		093224BC1F68A6E100CA11D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224BB1F68A6E100CA11D9 /* AppDelegate.swift */; };
-		093224BE1F68A6E100CA11D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224BD1F68A6E100CA11D9 /* ViewController.swift */; };
+		093224BE1F68A6E100CA11D9 /* BucketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224BD1F68A6E100CA11D9 /* BucketController.swift */; };
 		093224C11F68A6E100CA11D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093224BF1F68A6E100CA11D9 /* Main.storyboard */; };
 		093224C31F68A6E100CA11D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093224C21F68A6E100CA11D9 /* Assets.xcassets */; };
 		093224C61F68A6E100CA11D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093224C41F68A6E100CA11D9 /* LaunchScreen.storyboard */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		093224B81F68A6E100CA11D9 /* Bucket List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		093224BB1F68A6E100CA11D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		093224BD1F68A6E100CA11D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		093224BD1F68A6E100CA11D9 /* BucketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketController.swift; sourceTree = "<group>"; };
 		093224C01F68A6E100CA11D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		093224C21F68A6E100CA11D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		093224C51F68A6E100CA11D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				093224BB1F68A6E100CA11D9 /* AppDelegate.swift */,
-				093224BD1F68A6E100CA11D9 /* ViewController.swift */,
+				093224BD1F68A6E100CA11D9 /* BucketController.swift */,
 				093224BF1F68A6E100CA11D9 /* Main.storyboard */,
 				093224C21F68A6E100CA11D9 /* Assets.xcassets */,
 				093224C41F68A6E100CA11D9 /* LaunchScreen.storyboard */,
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093224BE1F68A6E100CA11D9 /* ViewController.swift in Sources */,
+				093224BE1F68A6E100CA11D9 /* BucketController.swift in Sources */,
 				093224BC1F68A6E100CA11D9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				INFOPLIST_FILE = "Bucket List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "oliviertests.Bucket-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				INFOPLIST_FILE = "Bucket List/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "oliviertests.Bucket-List";
 				PRODUCT_NAME = "$(TARGET_NAME)";
