@@ -10,22 +10,17 @@ import UIKit
 import CoreData
 
 class BucketController: UITableViewController, AddEditViewControllerDelegate {
-    var toGetDone = [
-        "Get motorcycling liscence",
-        "Make a short film",
-        "Write a collection of stories",
-        "Get in a bar fight",
-        "Stop an evil",
-        "Build my own motorbike/car",
-        "See the tropical forest canopy from above at sunset",
-        "Fly", 
-        "Build a walking robot"
-        ]
-    let managedObject = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var toGetDone = [BucketListItem]()
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet var bucketTableView: UITableView!
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "segueToNewAndEdit", sender: sender)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchAllItems()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,7 +28,7 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listItem", for: indexPath)
-        cell.textLabel?.text = toGetDone[indexPath.row]
+        cell.textLabel?.text = toGetDone[indexPath.row].listItemText
         return cell
     }
     
@@ -42,8 +37,8 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
         // NextStep object specifies type in triangular brackets
         let itemsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BucketListItem")
         do {
-            let itemsResult = try managedObject.fetch(itemsRequest)
-            let bucketListItem = itemsResult as! [String]
+            let itemsResult = try managedObjectContext.fetch(itemsRequest)
+            toGetDone.append(contentsOf: itemsResult as! [BucketListItem])
         } catch {
             print("Failed to load data")
         }
@@ -51,6 +46,14 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
     
     // Delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        managedObjectContext.delete(toGetDone[indexPath.row])
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("--------------")
+            print("Failed to save")
+            print("\(error)")
+        }
         toGetDone.remove(at: indexPath.row)
         bucketTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
@@ -69,7 +72,7 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
             if senderMirror.subjectType == NSIndexPath.self {
                 let senderIndexPath = newSender as! IndexPath
                 addEditViewContInstance.incomingIndexPath = senderIndexPath
-                addEditViewContInstance.incomingText = toGetDone[senderIndexPath.row]
+                addEditViewContInstance.incomingText = toGetDone[senderIndexPath.row].listItemText
                 addEditViewContInstance.view!.backgroundColor = UIColor.orange
             }
         }
@@ -80,12 +83,24 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     func saveButtonPressed(by controller: AddEditViewController, with: String, replaceRowAtIndex: IndexPath?) {
-        print("\(with)")
         if let _ = replaceRowAtIndex {
-            toGetDone[replaceRowAtIndex!.row] = with
+            print ("Updating an item")
+            toGetDone[replaceRowAtIndex!.row].listItemText = with
         } else {
-            toGetDone.append(with)
+            print ("""
+                We are trying to save
+            """)
+            let newItem = NSEntityDescription.insertNewObject(forEntityName: "BucketListItem", into: managedObjectContext) as! BucketListItem
+            newItem.listItemText = with
+            toGetDone.append(newItem)
         }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("Could not save: \(error)")
+        }
+        
         bucketTableView.reloadData()
         dismiss(animated: true, completion: nil)
     }

@@ -18,12 +18,11 @@ class AddEditViewController: UITableViewController {
         delegate?.cancelButtonPressed(by: self)
     }
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        let text = newBucketlistItem.text
-        if let _ = text {
+        if let newItem = newBucketlistItem.text {
             if let _ = incomingIndexPath {
-                delegate?.saveButtonPressed(by: self, with: text!, replaceRowAtIndex: incomingIndexPath!)
+                delegate?.saveButtonPressed(by: self, with: newItem, replaceRowAtIndex: incomingIndexPath!)
             } else {
-                delegate?.saveButtonPressed(by: self, with: text!, replaceRowAtIndex: nil)
+                delegate?.saveButtonPressed(by: self, with: newItem, replaceRowAtIndex: nil)
             }
         }
         
