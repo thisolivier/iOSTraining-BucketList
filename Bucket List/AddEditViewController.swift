@@ -8,8 +8,8 @@
 
 import UIKit
 
-class AddViewController: UITableViewController {
-    var delegate: AddViewControllerDelegate?
+class AddEditViewController: UITableViewController {
+    var delegate: AddEditViewControllerDelegate?
     var incomingText: String?
     var incomingIndexPath: IndexPath?
     
@@ -30,6 +30,10 @@ class AddViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("""
+        The incoming text is \(incomingText)
+        The incoming index is \(incomingIndexPath)
+        """)
         if let _ = incomingText{
             newBucketlistItem.text = incomingText!
         }

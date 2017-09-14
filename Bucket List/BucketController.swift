@@ -8,10 +8,7 @@
 
 import UIKit
 
-class BucketController: UITableViewController, AddViewControllerDelegate {
-    
-    
-    @IBOutlet var bucketTableView: UITableView!
+class BucketController: UITableViewController, AddEditViewControllerDelegate {
     var toGetDone = [
         "Get motorcycling liscence",
         "Make a short film",
@@ -23,52 +20,51 @@ class BucketController: UITableViewController, AddViewControllerDelegate {
         "Fly",
         "Build a walking robot"
         ]
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet var bucketTableView: UITableView!
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "segueToNewAndEdit", sender: sender)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return toGetDone.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listItem", for: indexPath)
         cell.textLabel?.text = toGetDone[indexPath.row]
         return cell
     }
     
+    // Delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         toGetDone.remove(at: indexPath.row)
         bucketTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
-    
+    // Edit
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "editPressedSegue", sender: indexPath)
+        performSegue(withIdentifier: "segueToNewAndEdit", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navController = segue.destination as! UINavigationController
-        let addViewController = navController.topViewController as! AddViewController
-        addViewController.delegate = self
-        if segue.identifier == "editPressedSegue" {
-            let outgoingIndex = sender! as! IndexPath
-            addViewController.view!.backgroundColor = UIColor.orange
-            addViewController.incomingIndexPath = outgoingIndex
-            addViewController.incomingText = toGetDone[outgoingIndex.row]
+        let addEditViewContInstance = navController.topViewController as! AddEditViewController
+        addEditViewContInstance.delegate = self
+        
+        if let newSender = sender {
+            let senderMirror = Mirror(reflecting: newSender)
+            if senderMirror.subjectType == NSIndexPath.self {
+                let senderIndexPath = newSender as! IndexPath
+                addEditViewContInstance.incomingIndexPath = senderIndexPath
+                addEditViewContInstance.incomingText = toGetDone[senderIndexPath.row]
+                addEditViewContInstance.view!.backgroundColor = UIColor.orange
+            }
         }
     }
     
-    func cancelButtonPressed(by controller: AddViewController) {
+    // Add&Edit protocol methods
+    func cancelButtonPressed(by controller: AddEditViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    func saveButtonPressed(by controller: AddViewController, with: String, replaceRowAtIndex: IndexPath?) {
+    func saveButtonPressed(by controller: AddEditViewController, with: String, replaceRowAtIndex: IndexPath?) {
         print("\(with)")
         if let _ = replaceRowAtIndex {
             toGetDone[replaceRowAtIndex!.row] = with

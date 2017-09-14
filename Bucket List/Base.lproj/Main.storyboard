@@ -35,13 +35,13 @@
                     <navigationItem key="navigationItem" title="Bucket List" largeTitleDisplayMode="always" id="dpe-37-wSE">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bQN-Ud-agf">
                             <connections>
-                                <segue destination="tB1-bi-8PU" kind="presentation" identifier="addPressedSegue" id="Zxy-Sz-sds"/>
+                                <action selector="addButtonPressed:" destination="NMr-La-8u8" id="Ctb-kM-nup"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bucketTableView" destination="9iS-Td-ClF" id="XeJ-O8-uWa"/>
-                        <segue destination="tB1-bi-8PU" kind="presentation" identifier="editPressedSegue" id="nHb-Ij-meb"/>
+                        <segue destination="tB1-bi-8PU" kind="presentation" identifier="segueToNewAndEdit" id="nHb-Ij-meb"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29s-tu-kpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -51,7 +51,7 @@
         <!--AddController-->
         <scene sceneID="t4h-EI-POZ">
             <objects>
-                <tableViewController id="YDO-km-gsx" userLabel="AddController" customClass="AddViewController" customModule="Bucket_List" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="YDO-km-gsx" userLabel="AddController" customClass="AddEditViewController" customModule="Bucket_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dfI-Sv-1xl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,4 @@
             <point key="canvasLocation" x="689" y="818"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="nHb-Ij-meb"/>
-    </inferredMetricsTieBreakers>
 </document>
