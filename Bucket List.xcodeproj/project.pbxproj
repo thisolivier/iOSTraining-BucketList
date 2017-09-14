@@ -16,6 +16,7 @@
 		093224DC1F68A6E100CA11D9 /* Bucket_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224DB1F68A6E100CA11D9 /* Bucket_ListUITests.swift */; };
 		093224EC1F68C99100CA11D9 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224EB1F68C99100CA11D9 /* AddEditViewController.swift */; };
 		093224F01F68D3A400CA11D9 /* AddEditViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224EF1F68D3A400CA11D9 /* AddEditViewControllerDelegate.swift */; };
+		09439EDB1F6B3868008A4DA6 /* BucketModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09439ED71F6B32FD008A4DA6 /* BucketModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		093224DD1F68A6E200CA11D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		093224EB1F68C99100CA11D9 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		093224EF1F68D3A400CA11D9 /* AddEditViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewControllerDelegate.swift; sourceTree = "<group>"; };
+		09439ED81F6B32FD008A4DA6 /* BucketModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BucketModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		093224BA1F68A6E100CA11D9 /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
+				09439ED71F6B32FD008A4DA6 /* BucketModel.xcdatamodeld */,
 				093224BD1F68A6E100CA11D9 /* BucketController.swift */,
 				093224BB1F68A6E100CA11D9 /* AppDelegate.swift */,
 				093224EB1F68C99100CA11D9 /* AddEditViewController.swift */,
@@ -269,6 +272,7 @@
 				093224BC1F68A6E100CA11D9 /* AppDelegate.swift in Sources */,
 				093224EC1F68C99100CA11D9 /* AddEditViewController.swift in Sources */,
 				093224F01F68D3A400CA11D9 /* AddEditViewControllerDelegate.swift in Sources */,
+				09439EDB1F6B3868008A4DA6 /* BucketModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +572,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		09439ED71F6B32FD008A4DA6 /* BucketModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				09439ED81F6B32FD008A4DA6 /* BucketModel.xcdatamodel */,
+			);
+			currentVersion = 09439ED81F6B32FD008A4DA6 /* BucketModel.xcdatamodel */;
+			path = BucketModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 093224B01F68A6E100CA11D9 /* Project object */;
 }

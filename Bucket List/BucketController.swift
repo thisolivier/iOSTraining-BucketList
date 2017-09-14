@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class BucketController: UITableViewController, AddEditViewControllerDelegate {
     var toGetDone = [
@@ -17,9 +18,11 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
         "Stop an evil",
         "Build my own motorbike/car",
         "See the tropical forest canopy from above at sunset",
-        "Fly",
+        "Fly", 
         "Build a walking robot"
         ]
+    let managedObject = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet var bucketTableView: UITableView!
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "segueToNewAndEdit", sender: sender)
@@ -34,6 +37,18 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
         return cell
     }
     
+    // Fetch permenantly stored items
+    func fetchAllItems(){
+        // NextStep object specifies type in triangular brackets
+        let itemsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BucketListItem")
+        do {
+            let itemsResult = try managedObject.fetch(itemsRequest)
+            let bucketListItem = itemsResult as! [String]
+        } catch {
+            print("Failed to load data")
+        }
+    }
+    
     // Delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         toGetDone.remove(at: indexPath.row)
@@ -43,7 +58,7 @@ class BucketController: UITableViewController, AddEditViewControllerDelegate {
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "segueToNewAndEdit", sender: indexPath)
     }
-    
+    // Prepare for seg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navController = segue.destination as! UINavigationController
         let addEditViewContInstance = navController.topViewController as! AddEditViewController
