@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.51047647699999998" green="0.92048550620000003" blue="0.93513196239999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listItem" id="2HF-Jc-MaS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="listItem" id="2HF-Jc-MaS">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2HF-Jc-MaS" id="c2o-Ql-dyC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -32,13 +32,17 @@
                             <outlet property="delegate" destination="NMr-La-8u8" id="scJ-f9-5Yg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dpe-37-wSE">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="bQN-Ud-agf">
+                    <navigationItem key="navigationItem" title="Bucket List" largeTitleDisplayMode="always" id="dpe-37-wSE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bQN-Ud-agf">
                             <connections>
-                                <segue destination="tB1-bi-8PU" kind="presentation" id="UHv-8h-Lef"/>
+                                <segue destination="tB1-bi-8PU" kind="presentation" identifier="addPressedSegue" id="Zxy-Sz-sds"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bucketTableView" destination="9iS-Td-ClF" id="XeJ-O8-uWa"/>
+                        <segue destination="tB1-bi-8PU" kind="presentation" identifier="editPressedSegue" id="nHb-Ij-meb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29s-tu-kpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,7 +51,7 @@
         <!--AddController-->
         <scene sceneID="t4h-EI-POZ">
             <objects>
-                <tableViewController id="YDO-km-gsx" userLabel="AddController" sceneMemberID="viewController">
+                <tableViewController id="YDO-km-gsx" userLabel="AddController" customClass="AddViewController" customModule="Bucket_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dfI-Sv-1xl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,9 +90,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Zqz-zD-vSe">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3AM-sd-vjJ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="H2n-50-Ady"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3AM-sd-vjJ">
+                            <connections>
+                                <action selector="cancelPressed:" destination="YDO-km-gsx" id="NSn-hl-kZ1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="H2n-50-Ady">
+                            <connections>
+                                <action selector="saveButton:" destination="YDO-km-gsx" id="iKe-i7-t9R"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newBucketlistItem" destination="ht2-sp-A65" id="JwO-IZ-bzM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJa-BZ-mdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,4 +146,7 @@
             <point key="canvasLocation" x="689" y="818"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nHb-Ij-meb"/>
+    </inferredMetricsTieBreakers>
 </document>

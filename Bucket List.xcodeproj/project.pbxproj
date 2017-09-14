@@ -14,6 +14,8 @@
 		093224C61F68A6E100CA11D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093224C41F68A6E100CA11D9 /* LaunchScreen.storyboard */; };
 		093224D11F68A6E100CA11D9 /* Bucket_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224D01F68A6E100CA11D9 /* Bucket_ListTests.swift */; };
 		093224DC1F68A6E100CA11D9 /* Bucket_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224DB1F68A6E100CA11D9 /* Bucket_ListUITests.swift */; };
+		093224EC1F68C99100CA11D9 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224EB1F68C99100CA11D9 /* AddViewController.swift */; };
+		093224F01F68D3A400CA11D9 /* AddViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093224EF1F68D3A400CA11D9 /* AddViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		093224D71F68A6E100CA11D9 /* Bucket ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bucket ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		093224DB1F68A6E100CA11D9 /* Bucket_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bucket_ListUITests.swift; sourceTree = "<group>"; };
 		093224DD1F68A6E200CA11D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		093224EB1F68C99100CA11D9 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		093224EF1F68D3A400CA11D9 /* AddViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,10 @@
 		093224BA1F68A6E100CA11D9 /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
-				093224BB1F68A6E100CA11D9 /* AppDelegate.swift */,
 				093224BD1F68A6E100CA11D9 /* BucketController.swift */,
+				093224BB1F68A6E100CA11D9 /* AppDelegate.swift */,
+				093224EB1F68C99100CA11D9 /* AddViewController.swift */,
+				093224EF1F68D3A400CA11D9 /* AddViewControllerDelegate.swift */,
 				093224BF1F68A6E100CA11D9 /* Main.storyboard */,
 				093224C21F68A6E100CA11D9 /* Assets.xcassets */,
 				093224C41F68A6E100CA11D9 /* LaunchScreen.storyboard */,
@@ -261,6 +267,8 @@
 			files = (
 				093224BE1F68A6E100CA11D9 /* BucketController.swift in Sources */,
 				093224BC1F68A6E100CA11D9 /* AppDelegate.swift in Sources */,
+				093224EC1F68C99100CA11D9 /* AddViewController.swift in Sources */,
+				093224F01F68D3A400CA11D9 /* AddViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
